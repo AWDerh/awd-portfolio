@@ -5,10 +5,10 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Current File",
+            "name": "Python Django: Run Server",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
+            "program": "manage.py runserver",
             "console": "integratedTerminal"
         }
     ]
