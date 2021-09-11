@@ -18,7 +18,7 @@
         </title>
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/awd_portfolio.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
         {% block extra_css %}{% endblock %}
     </head>    
     <body class="{% block body_class %}{% endblock %}">
@@ -27,7 +27,7 @@
         {% block content %}{% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/awd_portfolio.js' %}"></script>
+        <script type="text/javascript" src="{% static 'base.js' %}"></script>
         {% block extra_js %}{% endblock %}
     </body>
 </html>

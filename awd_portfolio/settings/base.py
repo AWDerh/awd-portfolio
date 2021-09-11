@@ -27,7 +27,9 @@ INSTALLED_APPS = [
     'home',
     # 'search',
     'portfolio',
-
+    'livereload',
+    'rest_framework',
+    'wagtail.api.v2',
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
     'wagtail.embeds',
@@ -61,6 +63,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    'livereload.middleware.LiveReloadScript',
 ]
 
 ROOT_URLCONF = 'awd_portfolio.urls'

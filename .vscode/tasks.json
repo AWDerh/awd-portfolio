@@ -7,7 +7,7 @@
             "label": "Run Local Server",
             "type": "shell",
             "windows": {
-                "command": ".\\venv\\Scripts\\Activate.ps1; python manage.py runserver",
+                "command": ".\\venv\\Scripts\\Activate.ps1; python manage.py runserver"
             },
             "group": {
                 "kind": "test",
@@ -15,7 +15,7 @@
             },
             "presentation": {
                 "clear": true,
-                "panel": "dedicated",
+                "panel": "dedicated"
             }
         },
         {
@@ -24,7 +24,7 @@
             "windows": {
                 "command": ".\\venv\\Scripts\\Activate.ps1; python manage.py makemigrations"
             },
-            "group": "build",
+            "group": "build"
         },
         {
             "label": "Run Database Migrations",
@@ -32,7 +32,38 @@
             "windows": {
                 "command": ".\\venv\\Scripts\\Activate.ps1; python manage.py migrate"
             },
-            "group": "build",
+            "group": "build"
+        },
+        {
+            "label": "Open Admin Panel",
+            "type": "shell",
+            "windows": {
+                "command": "start \"\" http://localhost:8000/admin"
+            }
+        },
+        {
+            "label": "Run Live Reload Server",
+            "type": "shell",
+            "windows": {
+                "command": ".\\venv\\Scripts\\Activate.ps1; python manage.py livereload"
+            }
+        },
+        {
+            "label": "Run TSC Watchdog",
+            "type": "shell",
+            "command": "tsc --watch",
+            "problemMatcher": []
+        },
+        {
+            "label": "Quick-start: Develop",
+            "type": "shell",
+            "dependsOn": [
+                "Run Live Reload Server",
+                "Run Local Server",
+                "Run TSC Watchdog"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
         }
     ]
 }
