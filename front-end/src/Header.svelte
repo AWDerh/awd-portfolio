@@ -3,7 +3,10 @@
 </script>
 
 <nav>
-    <ul>
-        <li>Test</li>
-    </ul>
+    <ol class="list-none">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/portfolio">Portfolio</a></li>        
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contact">Contact</a></li>
+    </ol>    
 </nav>
