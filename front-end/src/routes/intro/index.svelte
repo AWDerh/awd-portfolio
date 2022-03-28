@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Bootup from './Bootup.svelte';
+	import Login from './Login.svelte';
 	import Terminal from './Terminal.svelte';
+	import Pointer from './Pointer.svelte';
 	import WindowsDarkBackground from '$lib/win-dark-bg.webp';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -13,9 +15,6 @@
 	import IconSolidWorks from '$lib/icon-sldwrks.png';
 	import FaVolumeDown from 'svelte-icons/fa/FaVolumeDown.svelte';
 	import FaWifi from 'svelte-icons/fa/FaWifi.svelte';
-	import TypeWriter from 'svelte-typewriter';
-
-	import FaMousePointer from 'svelte-icons/fa/FaMousePointer.svelte';
 
 	// import Chrome from './Chrome.svelte';
 
@@ -23,6 +22,7 @@
 	let bootup_container: HTMLDivElement;
 	let os_container: HTMLDivElement;
 	let pointer_container: HTMLDivElement;
+	let pointer;
 	let current_date: Date;
 	let current_time_str: string;
 	let current_date_str: string;
@@ -39,6 +39,9 @@
 		if (scene == 1) {
 			setTimeout(next, 2000);
 		} else if (scene == 2) {
+			setTimeout(next, 1000);
+		} else if (scene == 3) {
+			pointer.movePointer('20%', '20%');
 		}
 	}
 
@@ -65,9 +68,6 @@
 			<Bootup />
 		</div>
 	{:else}
-		<div class="cursor h-5 w-5 absolute top-1/2 left-1/2" bind:this={pointer_container}>
-			<FaMousePointer />
-		</div>
 		<div
 			id="os-container"
 			bind:this={os_container}
@@ -75,7 +75,7 @@
 			style="background-image: url('{WindowsDarkBackground}')"
 			in:fade
 		>
-			{#if scene == 2}
+			{#if scene >= 2}
 				<header class="toolbar flex flex-row gap-9 w-full h-12 bg-black">
 					<div class="hover:text-blue-600 hover:bg-blend-lighten p-3"><FaWindows /></div>
 					<div class="flex grow gap-0">
@@ -116,28 +116,9 @@
 			{/if}
 		</div>
 		{#if scene == 1}
-			<div
-				class="block w-72 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-center"
-				in:fade
-				out:fade
-			>
-				<img
-					alt=""
-					class="rounded-full h-48 mx-auto"
-					src="https://media-exp1.licdn.com/dms/image/C4E03AQEVw3Y5-jGqSw/profile-displayphoto-shrink_800_800/0/1632075240706?e=1652918400&v=beta&t=sCkD7V8GWNn6ik1gazqmJvZDehUWNfFHKi46g9eLEbM"
-				/>
-				<h1 class="text-5xl my-3">Abdul Derh</h1>
-				<div
-					class="mt-7 bg-white text-left h-7 w-full rounded-sm p-1 text-black overflow-hidden resize-none editable"
-					type="password"
-					placeholder="Password"
-				>
-					<TypeWriter delay="1000">**********</TypeWriter>
-				</div>
-				<p class="text-gray-300 mt-5">Reset Password</p>
-				<p class="text-gray-300 mt-5">Sign-in Options</p>
-			</div>
+			<Login />
 		{/if}
+		<Pointer x="50%" y="50%" bind:pointer />
 	{/if}
 </div>
 
